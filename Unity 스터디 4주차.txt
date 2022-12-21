@@ -1,0 +1,42 @@
+<Unity 스터디 4주차 : 애니메이션>
+
+[Asset Store]
+- Asset Store에서 콘텐츠 제작에 필요한 자료들을 저렴한 가격으로 구매하여 이용할 수 있다.
+- 다운로드 한 패키지 파일은 C:\Users\{사용자}\AppData\Roaming\Unity\Asset Store-5.x 경로에 저장되어 있다.
+- Assets → Import Package → Custom Package... 를 통해 다운받은 패키지를 Assets에 다시 저장할 수 있다.
+
+[Animator]
+- Animator 컴포넌트는 Controller를 통해 해당 오브젝트가 애니메이션을 취할 수 있도록 해준다.
+- Animator Controllrer는 오브젝트의 애니메이션 클립 세트와 관련 애니메이션 전환을 정렬하고 관리한다.
+	◇ Animation을 드래그 앤 드롭하여 Animator Controller에 삽입할 수 있다.
+	◇ Animator Controller의 애니메이션을 더블 클릭하면 Inspector 창에서 애니메이션의 길이, 반복, 속도 등을 수정할 수 있다.
+- Animator Controller에서 애니메이션에 대고 마우스 우클릭을 하면 Make Transition을 할 수 있게 되어 애니매이션 상호 순환이 가능해진다.
+	◇ Transition에 있는 Has Exit Time 속성은 전환 시점이 되는 순간 애니메이션을 전환하는 옵션이다.
+	◇ Animator Controller의 왼편에는 Parameters 칸이 있는데 스크립트에서 보낸 파라미터 값을 실시간으로 가져온다.
+	◇ Animator Controller의 Transition의 Conditions에는 애니메이션을 전환할 조건을 추가할 수 있다.
+- {Animator}.Play("{애니메이션 명}") 함수를 통해 Animator Controller의 특정 애니메이션을 실행시킬 수 있다.
+- 아래 함수를 통해 Animator Controller에 파라미터를 전달할 수 있다.
+	◇ {Animator}.SetBool({파라미터 이름}, {bool})
+	◇ {Animator}.SetInteger({파라미터 이름}, {int})
+	◇ {Animator}.SetFloat({파라미터 이름}, {Float})
+
+[GetAxis 함수]
+- Input.GetAxis("{입력 정보}") 함수를 통해 사용자의 입력을 수치값으로 반환 해준다.
+- Input.GetAxis("Horizontal") 함수는 좌우 방향키나 A, D의 입력 값을 최소 -1에서 최대 1까지 순차적으로 변경시킨다.
+- Input.GetAxis("Vertical") 함수는 상하 방향키나 W, S의 입력 값을 최소 -1에서 최대 1까지 순차적으로 변경시킨다.
+
+[방향 벡터를 회전 각도로 변경하기]
+- Quaternion 자료형은 회전 방향을 담는 자료형이다. (마치, 위치를 담는 Vector3와 같이)
+- Quaternion.LookRotation({Vector3}) 함수는 방향 벡터를 바라보는 회전 각도를 반환한다.
+- Quaternion.Slerp({Quaternion(현재 회전 방향)}, {Quaternion(목표 회전 방향)}, {float(회전 속도)})은 현재 회전 방향에서 서서히 목표 회전 방향으로 회전할 수 있도록 해준다.
+
+[World 상의 위치를 Canvas 상의 위치로 변환하기]
+- {Camera}.WorldToScreenPoint({Vector3(World 상의 좌표)});
+
+[Animation Events]
+- 특정 키 프레임에 실행할 함수를 지정할 수 있다.
+	◇ Function : 함수의 이름
+	◇ Float : float 인자 값 (존재한다면)
+	◇ Int : int 인자 값 (존재한다면)
+	◇ String : string 인자 값 (존재한다면)
+	◇ Object : 함수가 포함된 스크립트 (단, 스크립트는 Animator가 추가된 곳에 추가되어있어야 함)

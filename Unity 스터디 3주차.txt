@@ -1,0 +1,62 @@
+<Unity 스터디 3주차 : UI>
+
+[Canvas]
+- 게임 상의 모든 UI를 표시하는 창
+- GameObject/UI/Canvas를 통해 생성 가능
+- EventSystem : Canvas 창에서 동적으로 발생하는 사건들을 처리하는 역할(Canvas 오브젝트와 함께 생성)
+- Canvas 상의 오브젝트는 Rect Transform 이라는 특수한 컴포넌트를 가지는데, Canvas 상의 Pos 좌표와 Width, Height와 같은 UI 전용 수치를 조작할 수 있다.
+
+[Button]
+- Button 컴포넌트의 Normal Color는 기본 색상, Highlighted Color는 마우스 오버할 때 색상, Pressed Color는 누를 때 색상을 의미한다.
+- OnClick()은 버튼이 눌려질 때, 오브젝트에 달려있는 스크립트의 함수(public으로 선언되어있는 함수)를 실행시킨다.
+	◇ 함수에 인자 값을 추가하여 구분할 수 있다.
+
+[Canvas Scaler]
+- UI의 크기를 조절하는 컴포넌트
+- 기본적으로 Canvas 오브젝트에 추가되어있다.
+- UI의 크기를 동적으로 조절하기 위해서는 UI Scale Mode를 Scale With Screen Size로 바꿔준다.
+
+[Text]
+- GameObject/UI/Text를 통해 문장을 입력할 수 있는 오브젝트를 생성한다.
+- 기본적으로 글자의 크기, 색상, 글꼴 등을 설정할 수 있다.
+- 스크립트로써 접근하기 위해서는 "using UnityEngine.UI;" 지시문을 기재해야 한다.
+- {Text}.text에 문자열을 지정할 수 있다.
+
+[자식 참조]
+- {Transform}.Find({string}) 함수를 통해 자식 오브젝트를 Transform 자료형 형태로 가져올 수 있다.
+- {Transform}.GetChild({int}) 함수를 통해 자식 오브젝트를 Transform 자료형 형태로 가져올 수 있다.
+	◇ 자식 오브젝트를 0번부터 순서대로 참조 가능
+	◇ ex) 자식 오브젝트의 개수가 3개 일 때, {Transform}.GetChild(3)을 사용하면 에러 발생
+
+[Slider]
+- GameObject/UI/Slider를 통해 드래그가 가능한 Slider를 생성할 수 있다.
+- Slider 컴포넌트의 Min Value와 Max Value를 통해 Value의 최대 값과 최소 값을 지정할 수 있다.
+- Slider 컴포넌트의 On Value Changed(Single)에는 Slider가 움직였을 때, 실행 될 함수를 지정할 수 있다.
+- {Slider}.value는 해당 슬라이더의 value 값을 참조 및 지정할 수 있다.
+
+[InputField]
+- GameObject/UI/Input Field를 통해 사용자의 입력을 받을 수 있는 오브젝트를 생성할 수 있다.
+- InputField 오브젝트의 Input Field 컴포넌트의 On Value Changed(String)은 값이 입력 될 때, On End Edit(String)은 입력을 끝낼 때 실행되는 함수들의 목록이다.
+- InputField 오브젝트의 자식인 Placeholder는 입력하기 전, 사용자에게 정보를 제공하는 문장을 출력하는 Text이다.
+- {InputField}.text를 통해 InputField 오브젝트에 사용자가 입력한 문장을 참조 및 지정할 수 있다.
+
+[Scroll View]
+- GameObject/UI/Scroll View를 통해 Scroll View를 생성할 수 있다.
+- Content 크기에 맞춰 스크롤 바의 크기가 조절된다.
+- Vertical Layout Group : Content에 자식으로 추가되는 오브젝트들을 수직으로 나열
+- Content Size Fitter : Content의 크기를 자식 오브젝트의 개수만큼 조절
+- Scroll Sensitivity는 스크롤 속도롤 가리킨다.
+
+[오브젝트의 복제]
+- 모든 오브젝트는 복제 후, 최상위에 생성된다.
+- 이름 뒤에는 (Clone)이 붙는다.
+- 자신을 참조할 때 복제되면, 복제된 자신을 가리킨다.
+- 부모가 크기에 관여한 오브젝트는 생성된 후, 본래의 크기와 다를 수 있다.
+
+[Image]
+- JPG, PNG, TGA,.. 확장자 등의 이미지를 유니티로 삽입할 수 있다.
+- Scene 상에 이미지를 나타내기 위해서는 Texture Type을 "Sprite (2D and UI)"로 변경 해주어야 한다.
+- GameObject/UI/Image를 통해 이미지를 나타내는 오브젝트를 생성할 수 있다.
+- Image 컴포넌트에 Sprite 타입의 이미지를 삽입할 수 있다.
+- Image Type을 Filled로 변경하면, 이미지의 표시 정도를 조절할 수 있다.
+	◇ {Image}.fillAmount로 참조 및 지정할 수 있다.

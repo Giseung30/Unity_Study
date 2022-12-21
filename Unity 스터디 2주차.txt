@@ -1,0 +1,73 @@
+<Unity 스터디 2주차 : 객체 생성 및 충돌>
+
+[프레임 간격]
+- Time.deltaTime은 프레임 간격 시간을 측정하는 변수이다 (프레임 차이로 인한 변수를 차단할 수 있다).
+- Time.deltaTime을 매 프레임마다 실수형 변수에 더해주면 결과적으로 초 단위를 나타내는 타이머가 된다.
+
+[Color 클래스]
+- 색상 정보를 나타내는 자료형
+- float의 값을 동시에 세 개(r, g, b) 지니는 자료형이다. (각 변수당 0 ~ 1사이의 값을 가진다)
+- Color 자료형은 new 연산자를 통해서만 할당할 수 있다.
+
+[Align With View]
+- Ctrl + Shift + F 키로 현재 씬 카메라의 위치와 회전 각도를 클릭된 오브젝트에 적용할 수 있다.
+
+[객체 지향의 특징]
+- 객체 지향 언어인 C#에서는 함수의 순서를 신경쓰지 않아도 된다.
+
+[MeshRenderer 클래스]
+- MeshRenderer 클래스는 Renderer 클래스를 상속받는다.
+- {Renderer}.material.color는 오브젝트의 색상을 RGB형태로 가진다.
+
+[무작위 Range 함수]
+- Random.Range({float}, {float})는 범위사이의 값을 무작위로 반환한다. (전 값과 후 값을 포함해서)
+- Random.Range({int}, {int})는 범위사이의 값을 무작위로 반환한다. (전 값은 포함하나 후 값은 포함하지 않는다)
+
+[Input 클래스]
+- Input.GetKey({KeyCode}) : 키를 누르는 동안에 true를 반환하는 함수
+- Input.GetKeyDown({KeyCode}) : 키를 누르는 순간 true를 반환하는 함수
+- Input.GetKeyUp({KeyCode}) : 키를 떼는 순간에 true를 반환하는 함수
+
+[Prefab]
+- 오브젝트를 Project 탭으로 드래그 앤 드롭하여 .prefab 형태로 저장할 수 있다.
+
+[오브젝트 복제]
+- Instantiate({Object}) 함수로 오브젝트를 복사할 수 있다. 
+- 오버로딩 함수로써 Instantiate({GameObject}, {Vector3}, {Quaternion})가 있다.
+
+[오브젝트 이름 변경]
+- {GameObject}.name을 통해 오브젝트의 이름을 반환 및 지정할 수 있다.
+
+[오브젝트 크기 변경]
+- {Transform}.localScale은 오브젝트의 크기를 반환하고, new 연산자를 통해 지정이 가능하다.
+
+[오브젝트 삭제]
+- Destroy({Object}) 함수를 통해 오브젝트를 삭제할 수 있다. (오버로딩 : Destroy([GameObject], 시간(초)[float]))
+
+[OnMouse~ 함수]
+- OnMouseDown : 오브젝트를 클릭하는 순간에 실행되는 함수
+- OnMouseUp : 오브젝트를 클릭하고 떼는 순간에 실행되는 함수
+- OnMouseEnter : 오브젝트를 가리키기 시작할 때 실행되는 함수
+- OnMouseExit : 오브젝트를 가리키지 않을 때 실행되는 함수
+- OnMouseOver : 오브젝트를 가리키는 동안 실행되는 함수
+
+[Position/Rotation]
+- Pivot : 오브젝트의 기준점
+- Center : 오브젝트의 중심점
+- Object's Rotation : 오브젝트 기준 회전 방향
+- Global Rotation : 월드 기준 회전 방향
+
+[상대 좌표 이동]
+- {Transform}.Translate({float}, {float}, {float}) 함수를 사용하여 상대 좌표로 이동할 수 있다.
+
+[오브젝트 바라보기]
+- {Transform}.LookAt({Transform}) 함수를 통해 해당 오브젝트의 z축을 목표 오브젝트 쪽으로 바라보게 할 수 있다.
+
+[OnCollision~ 함수]
+- OnCollisionEnter : 오브젝트가 충돌이 일어나는 순간에 실행되는 함수
+- OnCollisionStay : 오브젝트가 충돌이 일어나는 중에 실행되는 함수
+- OnCollisionExit : 오브젝트가 충돌에서 벗어나는 순간에 실행되는 함수
+- 인자 값으로 들어오는 collision 변수는 충돌이 일어난 오브젝트를 가리킨다.
+
+[Tag]
+- 오브젝트에 태그를 지정하여 구분할 수 있다.

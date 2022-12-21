@@ -1,0 +1,43 @@
+<Unity 스터디 7주차 : 지형 제작>
+
+[NavMeshAgent]
+- NavMesh 데이터를 기반으로 목적지까지의 최단거리를 계산해 이동하는 역할을 하는 컴포넌트이다.
+	◇ {NavMeshAgent}.destination 변수에 목표 지점(Vector3)을 지정하면 된다.
+	◇ 또는, {NavMeshAgent}.SetDestination({Vector3(목표 지점)});
+- Agent의 모양 뿐만 아니라 속도, 가속도, 회전 속도, 우선 순위 등을 조절할 수 있다.
+- NavMeshAgent 컴포넌트가 부착된 오브젝트는 NavMesh 데이터를 분석하여 최단 거리로 이동한다. (NavMesh 데이터가 없으면 에러가 발생한다.)
+	◇ NavMesh 데이터를 생성하고자 하는 지형에 Navigation Static을 지정한다. (Collider가 아닌 MeshRenderer를 기준으로 판단한다.)
+	◇ Navigation 탭의 Bake 창에서 지형의 최대 허용 높이, 최대 허용 각도 등을 설정하고 Bake하면 NavMesh 데이터가 생성된다.
+	◇ 파란색 구역은 지나갈 수 있는 구역이고, 검은색 구역은 지나갈 수 없는 구역이다.
+
+[Raycast 무시]
+- Collider 컴포넌트를 지닌 모든 오브젝트는 Raycast로부터 충돌이 발생하나, Layer를 '2: Ignore Raycast'로 지정하면 뚫고 지나간다.
+
+[Terrain]
+- 지형을 제작하는 컴포넌트이다.
+- Create Neighbor Terrains : 연속되는 지형을 제작하는데에 사용된다.
+- Paint Terrain : 지형의 높낮이, 텍스쳐, 구멍 내기, 깎아 내기 등 주요 기능을 포함하고 있다.
+	◇ Raise or Lower Terrain : 지형의 높낮이를 조절한다.(Left Click : 높이 증가, Shift + Left Click : 높이 감소)
+	◇ Paint Holes : 불필요한 지형에 구멍을 낸다. (Left Click : 지형 제거, Shift + Left Click : 지형 생성)
+	◇ Paint Texture : 지정된 텍스처를 Brush로 칠한다.
+		- Terrain Layer를 생성하여 Texture를 지정해야 한다.
+	◇ Set Height : 지정된 높이로 고정된 지형을 칠한다.
+	◇ Smooth Height : 울퉁불퉁한 지형을 부드럽게 깎는다.
+- Paint Trees : 제작된 나무를 확률적으로 배치한다.
+	◇ GameObject → 3D Object → Tree로 나무를 생성할 수 있고, Asset 폴더 최상위에 자동으로 생성된다.
+		- 나뭇가지와 잎의 개수, 휘어짐 정도, 크기, 각도 등을 설정할 수 있다.
+		- Materials(Nature → Tree Creator Bark)을 생성하여, 나뭇가지와 잎의 재질을 지정할 수 있다.
+	◇ Tree Density : 10 ~ 100사이의 값을 지정할 수 있고, 높을수록 빽빽하게 나무를 배치할 수 있다.
+	◇ Tree Height : 배치되는 나무의 높이를 지정할 수 있고, 무작위로 설정 가능하다.
+	◇ Tree Width : 배치되는 나무의 너비를 지정할 수 있고, 무작위로 설정 가능하다.
+
+[Coroutine]
+- Update 함수에 제어문을 통해 함수를 호출하는 식으로 코딩할 경우, 이미 사용됐거나 굳이 필요치 않은 기능들도 작업을 계속 수행해 연산이 낭비된다.
+- 또한, 몇 초 후에 작업이 필요할 때 또는 특정 상황의 종료 후에 작업하려할 때 Update 함수를 통해 매 프레임마다 작업이 끝났는지 계속 확인할 때에 사용된다.
+- 반환형은 IEnumerator 이며, 반드시 반환은 yield return으로 해야한다.
+	◇ yield return null : 다음 프레임까지 대기한다.
+	◇ yield return new WaitForSeconds(1f) : 1초 동안 메인 루틴을 처리하고 돌아온다.
+	◇ yield return new WaitForEndOfFrame() : 한 프레임을 처리하고 돌아온다.
+	◇ yield return StartCoroutine({IEnumerator}) : 다른 코루틴 함수를 처리하고 돌아온다.
+- StartCoroutine({IEnumerator}) 함수로 코루틴 함수를 실행할 수 있다.
+- 코루틴 함수를 Coroutine 변수에 할당하여 도중에 정지할 수도 있다.
