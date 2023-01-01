@@ -1,4 +1,4 @@
-## Unity Study Files
+## 📚 Unity Study Files
 + Unity 강의를 목적으로한 자료를 모아놓은 레포토리입니다. 여기 올라온 자료들은 모두 직접 제작한 것으로써, 원하실 때 자유롭게 활용하실 수 있고, 필요 시 업로드도 하실 수 있습니다.
 - 기타 문의
   - 이메일 : giseung30@gmail.com
